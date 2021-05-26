@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 3</title>
+</head>
+
+<body>
+    <div>
+        <div>
+            <h2>
+                Resultado: <span class="resultado"></span>
+            </h2>
+            <div>
+                <div>
+                    <div>
+                        <label for="">Valor 1</label>
+                        <input id="valor1" type="text">
+                    </div>
+                    <div>
+                        <label for="">Valor 2</label>
+                        <input id="valor2" type="text">
+                    </div>
+                    <div style="display: flex">
+                        <button id="btn-sumar" type="button">
+                            Sumar
+                        </button>
+                        <button id="btn-restar" type="button">
+                            Restar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    // Escríbe aquí tu código
+    const resultado = document.getElementsByClassName("resultado")[0]
+    const valor1 = document.getElementById("valor1")
+    const valor2 = document.getElementById("valor2")
+    const buttonSumar = document.getElementById("btn-sumar")
+    const buttonRestar = document.getElementById("btn-restar")
+    
+    //Obtiene los valores con el evento click en boton restar, comprueba que los elementos ingresados sean nuumeros, los resta y muestra el contenido en el span resultado
+    buttonRestar.addEventListener("click", ()=>{
+        const valorUno = +valor1.value
+        const valorDos = +valor2.value
+        console.log(valorDos,valorUno)
+        if(Number.isNaN(valorUno) || Number.isNaN(valorDos)){ alert("valores ingresados invalidos"); return false}
+        (valorUno-valorDos > 0) ? resultado.innerHTML = `${valorUno-valorDos}` :  resultado.innerHTML = "0"
+    })
+    //igual al anterior pero con suma xd
+    buttonSumar.addEventListener("click", ()=>{
+        const valorUno = +valor1.value
+        const valorDos = +valor2.value
+        console.log(valorDos,valorUno)
+        if(Number.isNaN(valorUno) || Number.isNaN(valorDos)){ alert("valores ingresados invalidos"); return false}
+        resultado.innerHTML = `${valorUno+valorDos}`
+    })
+
+    </script>
+</body>
+
+</html>

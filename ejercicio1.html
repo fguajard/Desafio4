@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 1</title>
+</head>
+
+<body>
+    <div>
+        <div class="ejercicio1" style="width: 40%;margin: 0 auto">
+            <h2>
+                Escríbenos !!!
+            </h2>
+            <div class="resultado" style="color:green;font-style: italic">
+            </div>
+            <form id="formulario">
+                <div>
+                    <div style="display: flex;flex-direction: column;">
+                        <label>
+                            Nombre completo
+                        </label>
+                        <input id="nombre" type="text">
+                        <p class="errorNombre" style="color:red;font-style: italic;"></p>
+                    </div>
+                    <div style="display: flex;flex-direction: column;">
+                        <label>
+                            Asunto
+                        </label>
+                        <input id="asunto" type="text">
+                        <p class="errorAsunto" style="color:red;font-style: italic;"></p>
+                    </div>
+                </div>
+                <div style="display: flex;flex-direction: column;">
+                    <label>
+                        Mensaje
+                    </label>
+                    <textarea id="mensaje"></textarea>
+                    <p class="errorMensaje" style="color:red;font-style: italic;"></p>
+                </div>
+                <div>
+                    <button id="botton" type="submit">
+                        Envíar mensaje
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+    // Escríbe aquí tu código   
+
+    //Datos
+    const name = document.getElementById("nombre");
+    const asunto = document.getElementById("asunto");
+    const message = document.getElementById("mensaje");
+    const button = document.getElementById("botton");
+    const formulario = document.getElementById("formulario");
+    formulario.addEventListener("submit",(e)=>e.preventDefault())
+    const errorNombre = document.getElementsByClassName("errorNombre")[0];
+    const errorAsunto = document.getElementsByClassName("errorAsunto")[0];
+    const errorMensaje = document.getElementsByClassName("errorMensaje")[0];
+    const resultado = document.getElementsByClassName("resultado")[0];    
+   
+   //Funcion de Validacion usando la expresion regular
+    const validation = (text) =>{
+        const check = /^[a-zA-Z ]*$/gmi.test(text)        
+        if(!check||!text) return false
+        else return true
+    }
+    
+    //Al apretar el boton comprobara cada campo con "validation" si cada campo esta ok imprime el mensaje de enviado
+    button.addEventListener("click", ()=>{        
+        if(!validation(name.value)) errorNombre.innerHTML = `El nombre es requerido`
+        else errorNombre.innerHTML = ``
+        if(!validation(asunto.value)) errorAsunto.innerHTML = `El asunto es requerido`
+        else errorAsunto.innerHTML = ``
+        if(!validation(message.value)) errorMensaje.innerHTML = `El mensaje es requerido`
+        else errorMensaje.innerHTML = ``
+        if (validation(name.value) && validation(asunto.value) && validation(message.value))resultado.innerHTML = `Mensaje enviado con exito !!!`
+    })
+
+
+    </script>
+</body>
+
+</html>
